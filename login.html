@@ -1,0 +1,629 @@
+about.html
+
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kami</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #00bfff;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rental.html">Rental</a></li>
+      <li><a href="about.html" class="active">Tentang Kami</a></li>
+      <li><a href="contact.html">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h2>Tentang Kami</h2>
+    <p>
+      Kami adalah penyedia layanan rental mobil terpercaya yang berdiri sejak tahun 2010. Dengan pengalaman lebih dari satu dekade, kami menyediakan berbagai pilihan mobil berkualitas untuk kebutuhan perjalanan Anda, baik dalam kota maupun luar kota.
+    </p>
+    <p>
+      Kami percaya bahwa kenyamanan dan keamanan pelanggan adalah yang utama. Oleh karena itu, kami selalu menjaga kebersihan, perawatan, dan performa mobil-mobil kami. Selain itu, tim kami siap membantu Anda dengan pelayanan ramah dan profesional.
+    </p>
+  </div>
+</body>
+</html>
+
+index.html
+
+  <!DOCTYPE html>
+  <html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Rental Mobil</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        color: #333;
+      }
+
+      nav {
+        background: #333;
+        padding: 1rem;
+      }
+
+      nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        color: #00bfff;
+      }
+
+      header {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .carousel {
+        display: flex;
+        height: 100%;
+        width: 300%;
+        animation: slide 12s infinite;
+      }
+
+      .carousel img {
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+      }
+
+      @keyframes slide {
+        0% { transform: translateX(0); }
+        33% { transform: translateX(-100vw); }
+        66% { transform: translateX(-200vw); }
+        100% { transform: translateX(0); }
+      }
+
+      .headline {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background: rgba(0,0,0,0.5);
+        color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        animation: fadeIn 2s ease-out forwards;
+        opacity: 0;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="rental.html">Rental</a></li>
+        <li><a href="about.html">Tentang Kami</a></li>
+        <li><a href="contact.html">Kontak</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <div class="carousel">
+        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d" alt="Mobil 1">
+        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" alt="Mobil 2">
+        <img src="https://images.unsplash.com/photo-1549921296-3a6b5a5ca5b1" alt="Mobil 3">
+      </div>
+      <div class="headline">
+        <h1>Sewa Mobil Terpercaya & Nyaman</h1>
+        <p>Temukan mobil pilihan Anda dengan harga terbaik</p>
+      </div>
+    </header>
+  </body>
+  </html>
+
+
+rental.html
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rental Mobil</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #00bfff;
+    }
+
+    .container {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .mobil-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .mobil-item {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      animation: fadeUp 1s ease forwards;
+      opacity: 0;
+    }
+
+    .mobil-item:hover {
+      transform: scale(1.05);
+    }
+
+    .mobil-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .mobil-info {
+      padding: 1rem;
+    }
+
+    .mobil-info h3 {
+      margin: 0.5rem 0;
+    }
+
+    .mobil-info p {
+      color: #666;
+    }
+
+    .mobil-info button {
+      background-color: #007bff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .mobil-info button:hover {
+      background-color: #0056b3;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="rental.html">Rental</a></li>
+      <li><a href="about.html">Tentang Kami</a></li>
+      <li><a href="contact.html">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h2>Daftar Mobil Tersedia</h2>
+
+    <h3>Family Car</h3>
+    <div class="mobil-list">
+      <div class="mobil-item">
+        <img src="https://i.ibb.co/x7VjG7n/fortuner.jpg" alt="Fortuner">
+        <div class="mobil-info">
+          <h3>Fortuner</h3>
+          <p>Rp 800.000 / hari</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+      <div class="mobil-item">
+        <img src="https://i.ibb.co/gwrgY8W/avanza.jpg" alt="Avanza">
+        <div class="mobil-info">
+          <h3>Avanza</h3>
+          <p>Rp 350.000 / hari</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+      <div class="mobil-item">
+        <img src="https://i.ibb.co/FmbBKTg/inova.jpg" alt="Inova">
+        <div class="mobil-info">
+          <h3>Inova</h3>
+          <p>Rp 500.000 / hari</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+    </div>
+
+    <h3>City Car</h3>
+    <div class="mobil-list">
+      <div class="mobil-item">
+        <img src="https://i.ibb.co/gwrgY8W/ayla.jpg" alt="Ayla">
+        <div class="mobil-info">
+          <h3>Ayla</h3>
+          <p>Rp 300.000 / hari</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+      <div class="mobil-item">
+        <img src="https://i.ibb.co/Z1ngT5p/etios.jpg" alt="Etios">
+        <div class="mobil-info">
+          <h3>Etios</h3>
+          <p>Rp 400.000 / hari</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+      <div class="mobil-item">
+        <img src="https://i.ibb.co/hX35tLc/brio.jpg" alt="Brio">
+        <div class="mobil-info">
+          <h3>Brio</h3>
+          <p>Rp 250.000 / hari</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Form -->
+<div id="sewaModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Form Penyewaan Mobil</h2>
+    <form id="formSewa">
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" required>
+
+      <label for="tanggal">Tanggal Sewa:</label>
+      <input type="date" id="tanggal" required>
+
+      <label for="hari">Jumlah Hari:</label>
+      <input type="number" id="hari" required min="1">
+
+      <label for="harga">Harga per Hari (Rp):</label>
+      <input type="number" id="harga" readonly>
+
+      <label for="total">Total Harga (Rp):</label>
+      <input type="number" id="total" readonly>
+
+      <button type="submit">Kirim</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Modal logic
+  const modal = document.getElementById("sewaModal");
+  const span = document.getElementsByClassName("close")[0];
+  const hargaInput = document.getElementById("harga");
+  const hariInput = document.getElementById("hari");
+  const totalInput = document.getElementById("total");
+
+  document.querySelectorAll(".mobil-info button").forEach(button => {
+    button.addEventListener("click", function () {
+      const hargaText = this.parentElement.querySelector("p").innerText;
+      const harga = parseInt(hargaText.replace(/\D/g, ""));
+      hargaInput.value = harga;
+      totalInput.value = "";
+      hariInput.value = "";
+      modal.style.display = "block";
+    });
+  });
+
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  hariInput.addEventListener("input", function () {
+    const hari = parseInt(this.value);
+    const harga = parseInt(hargaInput.value);
+    if (!isNaN(hari) && !isNaN(harga)) {
+      totalInput.value = harga * hari;
+    }
+  });
+
+  document.getElementById("formSewa").addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("Penyewaan berhasil dikirim!");
+    modal.style.display = "none";
+    this.reset();
+  });
+</script>
+
+<style>
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    animation: fadeIn 0.5s;
+  }
+
+  .modal-content input {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .modal-content button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+
+
+
+
+</body>
+</html>
+
+
+scit.js
+
+function showForm(mobil) {
+  const formSection = document.getElementById('rentalForm');
+  formSection.scrollIntoView({ behavior: 'smooth' });
+}
+
+scipt.css
+
+/* Umum */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #007bff;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li a.active {
+  font-weight: bold;
+}
+
+/* Slider */
+.slider {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+}
+
+.slides {
+  display: flex;
+  width: 300%;
+  animation: slide 15s infinite;
+}
+
+.slides img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+@keyframes slide {
+  0% { transform: translateX(0%); }
+  33% { transform: translateX(-100%); }
+  66% { transform: translateX(-200%); }
+  100% { transform: translateX(0%); }
+}
+
+/* Rental */
+.rental-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.mobil-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 30%;
+  transition: transform 0.3s;
+}
+
+.mobil-item:hover {
+  transform: scale(1.05);
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+/* About & Contact */
+.about, .contact {
+  padding: 20px;
+}
