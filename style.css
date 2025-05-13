@@ -230,6 +230,13 @@ body.about-page {
   opacity: 0;
 }
 
+.text-center-box {
+  max-width: 700px; /* atau sesuai keinginan, misalnya 600px */
+  margin: 0 auto;
+  text-align: center;
+}
+
+
 /* Judul dan paragraf */
 .about-page h2 {
   text-align: center;
@@ -282,56 +289,71 @@ body.about-page {
 }
 
 /* ===== Footer ===== */
-footer {
-  background: linear-gradient(135deg, #808080, #708090);
-  color: white;
-  padding: 3rem 0;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
-}
-
+/* Footer container: atur tampilan grid 4 kolom */
 .footer-container {
   display: flex;
   justify-content: space-between;
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-bottom: 20px;
   flex-wrap: wrap;
+  background-color: #1e1e1e; /* opsional: sesuai warna background pada gambar */
+  padding: 40px;
+  color: #fff;
 }
 
+/* Setiap kolom di dalam footer */
 .footer-column {
   flex: 1;
-  min-width: 250px;
+  min-width: 200px;
+  margin: 10px;
+  text-align: left; /* pastikan rata kiri */
 }
 
+/* Judul kolom */
 .footer-column h3 {
-  color: #fff;
-  margin-bottom: 1rem;
-  font-size: 1.4rem;
-  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #ccc;
 }
 
+/* List dalam kolom */
 .footer-column ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-column ul li {
-  margin: 0.5rem 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
 
-.footer-column ul li a {
-  color: white;
+/* Style tautan dan ikon */
+.footer-column a {
+  color: #fff;
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.3s ease;
 }
 
-.footer-column ul li a:hover {
-  color: #00bfff;
+.footer-column a:hover {
+  text-decoration: underline;
 }
+
+.footer-column i {
+  margin-right: 8px;
+}
+
+/* Payment grid */
+.payment-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.payment-grid img {
+  height: 30px;
+  background: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 
 /* Ikon media sosial */
 .social-icons {
@@ -340,6 +362,9 @@ footer {
   gap: 1.5rem;
   margin-top: 1.5rem;
   animation: fadeIn 1s ease;
+}
+.footer-column {
+  text-align: left;
 }
 
 .social-icons a {
@@ -353,6 +378,18 @@ footer {
   color: #00bfff;
   transform: scale(1.1);
 }
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-column {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
 
 /* Ikon pembayaran */
 .payment-grid {
