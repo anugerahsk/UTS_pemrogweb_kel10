@@ -1,0 +1,609 @@
+
+
+/* Rental */
+.rental-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.mobil-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 30%;
+  transition: transform 0.3s;
+}
+
+.mobil-item:hover {
+  transform: scale(1.05);
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+/* About & Contact */
+.about, .contact {
+  padding: 20px;
+}
+
+
+/* Halaman Rental */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Navigasi */
+nav {
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+nav ul li a:hover,
+nav ul li a.active {
+  color: #00bfff;
+}
+
+/* Kontainer */
+.container {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Grid Mobil */
+.mobil-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+
+
+.mobil-item {
+  width: 100%;
+  max-width: 280px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 16px;
+}
+
+.mobil-item:hover {
+  transform: scale(1.05);
+}
+.mobil-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+  .mobil-list {
+    grid-template-columns: repeat(2, 1fr); /* Dua kolom di tablet */
+  }
+}
+
+@media (max-width: 600px) {
+  .mobil-list {
+    grid-template-columns: 1fr; /* Satu kolom di HP */
+  }
+}
+
+
+
+/* Info Mobil */
+.mobil-info {
+  padding: 1rem;
+}
+.mobil-info h3 {
+  margin: 0.5rem 0;
+}
+.mobil-info p {
+  color: #666;
+}
+.mobil-info button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.mobil-info button:hover {
+  background-color: #0056b3;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 2rem;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  animation: fadeIn 0.5s;
+}
+.modal-content input {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.5rem 0 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.modal-content button {
+  background-color: #007bff;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Animasi */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
+
+
+/* ===== Halaman tentang kami ===== */
+body.about-page {
+  background-color: #DCDCDC;
+}
+
+/* Container khusus about */
+.about-page .container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
+}
+
+/* Judul dan paragraf */
+.about-page h2 {
+  text-align: center;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.about-page p {
+  line-height: 1.6;
+  text-align: justify;
+  margin-bottom: 1rem;
+}
+
+.about-page .container p {
+  text-align: center;
+}
+
+/* ===== Profile PACE RENTAL ===== */
+.profile {
+  color: #333;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile .logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1.5rem;
+  object-fit: contain;
+}
+
+.profile h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.profile p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.profile .quote {
+  font-style: italic;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #555;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: linear-gradient(135deg, #808080, #708090);
+  color: white;
+  padding: 3rem 0;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-column h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin: 0.5rem 0;
+}
+
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #00bfff;
+}
+
+/* Ikon media sosial */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  animation: fadeIn 1s ease;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 2.5rem;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #00bfff;
+  transform: scale(1.1);
+}
+
+/* Ikon pembayaran */
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.payment-grid img {
+  width: 90px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.payment-grid img:hover {
+  transform: scale(1.1);
+}
+
+/* Animasi tambahan */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* Umum */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* Navigasi */
+nav {
+  background: #333;
+  padding: 1rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #00bfff;
+}
+
+/* Header dan Carousel */
+header {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  height: 100%;
+  width: 300%;
+  animation: slide 12s infinite;
+}
+
+.carousel img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  33% { transform: translateX(-100vw); }
+  66% { transform: translateX(-200vw); }
+  100% { transform: translateX(0); }
+}
+
+/* Headline di atas carousel */
+.headline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  animation: fadeIn 2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+/* ==== Bagian Umum ==== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+}
+
+h2, h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav {
+  background-color: #003366;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  color: white;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: #005599;
+}
+
+/* ==== Map Section ==== */
+.map-section h2 {
+  text-align: center;
+  margin: 40px 0 20px;
+  font-size: 24px;
+}
+
+.map-section iframe {
+  width: 100%;
+  max-width: 1100px;
+  height: 450px;
+  border: 0;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+
+/* ==== halaman kontak ==== */
+.contact-form-section {
+  background-color: transparent; /* Menghapus warna latar belakang */
+  padding: 0; /* Menghapus padding */
+  border-radius: 0; /* Menghapus border-radius */
+  margin: 0 auto 40px; /* Menyesuaikan margin */
+  max-width: 1200px;
+  box-shadow: none; /* Menghapus box-shadow */
+}
+
+.contact-form-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-section form label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.contact-form-section form input,
+.contact-form-section form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+
+.contact-form-section form button {
+  padding: 12px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.contact-form-section form button:hover {
+  background-color: #005599;
+}
+
+/* ==== Info Kontak (Sebelah Kanan) ==== */
+.contact-form-section div:last-child p {
+  margin: 6px 0;
+}
+
+.contact-form-section div:last-child h3 {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #003366;
+}
+
+/* ==== Responsif ==== */
+@media (max-width: 768px) {
+  .contact-form-section {
+    flex-direction: column;
+  }
+
+  .contact-form-section > div {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .map-section iframe {
+    width: 100% !important;
+  }
+}

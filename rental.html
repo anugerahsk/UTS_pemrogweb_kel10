@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rental Mobil</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rental.html" class="active">Rental</a></li>
+      <li><a href="about.html">Tentang Kami</a></li>
+      <li><a href="contact.html">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h2>Daftar Mobil Tersedia</h2>
+
+    <h3>Family Car</h3>
+    <div class="mobil-list">
+      <!-- Daftar mobil -->
+      <div class="mobil-item">
+        <img src="fortuner.jpg" alt="Fortuner">
+        <div class="mobil-info">
+          <h2>Fortuner</h2>
+          <h4>Rp 800.000 / hari</h4>
+          <p>Tampil gagah dan elegan, cocok untuk perjalanan jauh dengan kenyamanan maksimal dan performa bertenaga.</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+      <div class="mobil-item">
+        <img src="avanza.jpg" alt="Avanza">
+        <div class="mobil-info">
+          <h2>Avanza</h2>
+          <h4>Rp 350.000 / hari</h4>
+           <p>Mobil serba bisa irit, nyaman, dan siap menemani setiap perjalanan harian atau liburan.</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+      <div class="mobil-item">
+        <img src="inova.jpg" alt="Innova">
+        <div class="mobil-info">
+          <h2>Inova</h2>
+          <h4>Rp 500.000 / hari</h4>
+           <p>Kabin luas dan fitur modern menjadikan Inova pilihan sempurna untuk keluarga besar dan perjalanan jarak</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+    </div>
+
+    <h3>City Car</h3>
+    <div class="mobil-list">
+      <div class="mobil-item">
+        <img src="ayla.jpg" alt="Ayla">
+        <div class="mobil-info">
+          <h2>Ayla</h2>
+          <h4>Rp 300.000 / hari</h4>
+           <p>Mobil compact yang hemat bahan bakar, ideal untuk aktivitas harian di jalanan kota yang padat.</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+      <div class="mobil-item">
+        <img src="etios.jpg" alt="Etios">
+        <div class="mobil-info">
+          <h2>Etios</h2>
+          <h4>Rp 400.000 / hari</h4>
+           <p>Tampilan stylish dengan mesin responsif—teman terbaik untuk mobilitas cepat dan fleksibe</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+      <div class="mobil-item">
+        <img src="brio.jpg" alt="Brio">
+        <div class="mobil-info">
+          <h2>Brio</h2>
+          <h4>Rp 250.000 / hari</h4>
+           <p>Desain praktis dengan ruang kabin lega, cocok untuk kamu yang aktif dan ingin berkendara nyaman di kota</p>
+          <button>Sewa Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Form -->
+  <div id="sewaModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Form Penyewaan Mobil</h2>
+      <form id="formSewa">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required placeholder="contoh@domain.com">
+
+        <label for="tanggal">Tanggal Sewa:</label>
+        <input type="date" id="tanggal" required>
+
+        <label for="hari">Jumlah Hari:</label>
+        <input type="number" id="hari" required min="1">
+
+        <label for="harga">Harga per Hari (Rp):</label>
+        <input type="number" id="harga" readonly>
+
+        <label for="total">Total Harga (Rp):</label>
+        <input type="number" id="total" readonly>
+
+        <button type="submit">Kirim</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Modal logic
+    const modal = document.getElementById("sewaModal");
+    const span = document.getElementsByClassName("close")[0];
+    const hargaInput = document.getElementById("harga");
+    const hariInput = document.getElementById("hari");
+    const totalInput = document.getElementById("total");
+
+    document.querySelectorAll(".mobil-info button").forEach(button => {
+      button.addEventListener("click", function () {
+        const hargaText = this.parentElement.querySelector("p").innerText;
+        const harga = parseInt(hargaText.replace(/\D/g, ""));
+        hargaInput.value = harga;
+        totalInput.value = "";
+        hariInput.value = "";
+        modal.style.display = "block";
+      });
+    });
+
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    hariInput.addEventListener("input", function () {
+      const hari = parseInt(this.value);
+      const harga = parseInt(hargaInput.value);
+      if (!isNaN(hari) && !isNaN(harga)) {
+        totalInput.value = harga * hari;
+      }
+    });
+
+    document.getElementById("formSewa").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const email = document.getElementById("email").value;
+      const tanggal = document.getElementById("tanggal").value;
+      const hari = document.getElementById("hari").value;
+      const total = document.getElementById("total").value;
+
+      alert(
+        `Penyewaan berhasil!\n\n` +
+        `Nama: ${nama}\n` +
+        `Email: ${email}\n` +
+        `Tanggal: ${tanggal}\n` +
+        `Lama Sewa: ${hari} hari\n` +
+        `Total Harga: Rp ${total}`
+      );
+      modal.style.display = "none";
+      this.reset();
+    });
+
+
+  </script>
+  <!-- Ini adalah tempat footer dimuat -->
+<div id="footer"></div>
+
+<!-- Ini adalah JavaScript yang akan mengambil isi dari footer.html -->
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    })
+    .catch(error => {
+      console.error("Gagal memuat footer:", error);
+    });
+</script>
+
+
+</body>
+</html>
