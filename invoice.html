@@ -51,63 +51,49 @@
       text-decoration: none;
       color: #000;
     }
-    /* Style Modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 99;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.5);
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 20px;
-  border-radius: 10px;
-  width: 400px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-.close:hover {
-  color: #000;
-}
-
-.btn-rincian, .btn-upload {
-  background-color: #ffa500;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.btn-rincian:hover, .btn-upload:hover {
-  background-color: #ff8c00;
-}
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 99;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #000;
+    }
+    .btn-rincian, .btn-upload {
+      background-color: #ffa500;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-rincian:hover, .btn-upload:hover {
+      background-color: #ff8c00;
+    }
   </style>
 </head>
-<script>
-    function openModal() {
-  document.getElementById("paymentModal").style.display = "block";
-}
 
-function closeModal() {
-  document.getElementById("paymentModal").style.display = "none";
-}
-</script>
 <body>
 
 <div class="invoice-container">
@@ -118,35 +104,35 @@ function closeModal() {
     <tr>
       <td class="detail-table">
         <h3>Detail Pembelian</h3>
-        <p>Produk: Sewa Mobil Avanza</p>
-        <p>Nomor Invoice: INV12345678</p>
+        <p id="produk"></p>
+        <p><strong>Nomor Invoice:</strong> <span id="invoice"></span></p>
         <p>Status Transaksi: <strong style="color:orange">PENDING</strong></p>
         <p>Status Pembayaran: <strong style="color:red">UNPAID</strong></p>
-        <p>Total Pembayaran: <strong>Rp 1.050.000</strong></p>
+        <p>Total Pembayaran: <strong id="totalBayar"></strong></p>
 
-        <!-- Tombol untuk buka popup -->
         <button onclick="openModal()" class="btn-rincian">Rincian Pembayaran</button>
 
-        <!-- Modal -->
         <div id="paymentModal" class="modal">
-            <div class="modal-content">
+          <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h2>Rincian Pembayaran</h2>
-            <p><strong>Nomor Invoice:</strong> INV12345678</p>
-            <p><strong>Produk:</strong> Sewa Mobil Avanza</p>
-            <p><strong>Harga Sewa Mobil:</strong> Rp 350.000</p>
-            <p><strong>Biaya Supir:</strong> Rp 50.000</p>
+            <p><strong>Nomor Invoice:</strong> <span id="invoiceModal"></span></p>
+            <p><strong>Produk:</strong> <span id="produkModal"></span></p>
+            <p><strong>Harga Sewa Mobil:</strong> Rp <span id="hargaModal"></span></p>
+            <p><strong>Biaya Supir:</strong> Rp 0</p>
             <p><strong>Biaya BBM:</strong> Rp 0</p>
             <p><strong>Biaya Tambahan Lain:</strong> Rp 0</p>
             <hr>
-            <p><strong>Total Pembayaran:</strong> Rp 1.050.000</p>
+            <p><strong>Total Pembayaran:</strong> Rp <span id="totalModal"></span></p>
             <p><strong>Metode Pembayaran:</strong> QRIS</p>
             <p><strong>Status Pembayaran:</strong> UNPAID</p>
             <p><strong>Batas Waktu Pembayaran:</strong> 14 Mei 2025, 23:59 WIB</p>
             <button class="btn-upload">Upload Bukti Pembayaran</button>
+          </div>
         </div>
-    </div>
+
       </td>
+
       <td class="qr-section">
         <h3>QRIS Pembayaran</h3>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4pibXJ8tNFdj-zRYUAccmvn7LF3WOaQfb4E8IhBzvW8Kvnlb1Cg&s=10&ec=72940545" alt="QRIS">
@@ -156,6 +142,41 @@ function closeModal() {
   </table>
 
 </div>
+
+<script>
+function openModal() {
+  document.getElementById("paymentModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("paymentModal").style.display = "none";
+}
+
+function getParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+// Ambil data dari URL
+const nama = getParam("nama");
+const mobil = getParam("mobil");
+const harga = getParam("harga");
+const hari = getParam("hari");
+const total = getParam("total");
+
+// Generate nomor invoice random
+const invoiceNum = "INV" + Math.floor(10000000 + Math.random() * 90000000);
+
+// Isi data ke halaman
+document.getElementById("produk").innerHTML = `Produk: Sewa Mobil ${mobil}`;
+document.getElementById("invoice").innerText = invoiceNum;
+document.getElementById("totalBayar").innerText = "Rp " + total;
+
+document.getElementById("invoiceModal").innerText = invoiceNum;
+document.getElementById("produkModal").innerText = `Sewa Mobil ${mobil}`;
+document.getElementById("hargaModal").innerText = harga;
+document.getElementById("totalModal").innerText = total;
+</script>
 
 </body>
 </html>
