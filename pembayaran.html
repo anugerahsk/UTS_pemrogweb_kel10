@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halaman Pembayaran</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .row .col {
+      width: 48%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Formulir Pembayaran</h2>
+    <form action="proses_pembayaran.php" method="POST">
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" name="nama" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="nomor_kartu">Nomor Kartu</label>
+      <input type="text" id="nomor_kartu" name="nomor_kartu" maxlength="16" required>
+
+      <div class="row">
+        <div class="col">
+          <label for="expired">Tanggal Kedaluwarsa</label>
+          <input type="text" id="expired" name="expired" placeholder="MM/YY" required>
+        </div>
+        <div class="col">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" name="cvv" maxlength="4" required>
+        </div>
+      </div>
+
+      <input type="submit" value="Bayar Sekarang">
+    </form>
+  </div>
+</body>
+</html>
