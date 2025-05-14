@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice Pembayaran</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .invoice-container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    td, th {
+      padding: 10px;
+      vertical-align: top;
+    }
+    .detail-table {
+      width: 60%;
+    }
+    .qr-section {
+      text-align: center;
+    }
+    .qr-section img {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .btn-download {
+      display: inline-block;
+      margin-top: 20px;
+      background: #ffc107;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #000;
+    }
+    /* Style Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.btn-rincian, .btn-upload {
+  background-color: #ffa500;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-rincian:hover, .btn-upload:hover {
+  background-color: #ff8c00;
+}
+  </style>
+</head>
+<script>
+    function openModal() {
+  document.getElementById("paymentModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("paymentModal").style.display = "none";
+}
+</script>
+<body>
+
+<div class="invoice-container">
+  <h1>Terima Kasih!</h1>
+  <h2>Harap Lengkapi Pembayaran</h2>
+
+  <table border="0">
+    <tr>
+      <td class="detail-table">
+        <h3>Detail Pembelian</h3>
+        <p>Produk: Sewa Mobil Avanza</p>
+        <p>Nomor Invoice: INV12345678</p>
+        <p>Status Transaksi: <strong style="color:orange">PENDING</strong></p>
+        <p>Status Pembayaran: <strong style="color:red">UNPAID</strong></p>
+        <p>Total Pembayaran: <strong>Rp 1.050.000</strong></p>
+
+        <!-- Tombol untuk buka popup -->
+        <button onclick="openModal()" class="btn-rincian">Rincian Pembayaran</button>
+
+        <!-- Modal -->
+        <div id="paymentModal" class="modal">
+            <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Rincian Pembayaran</h2>
+            <p><strong>Nomor Invoice:</strong> INV12345678</p>
+            <p><strong>Produk:</strong> Sewa Mobil Avanza</p>
+            <p><strong>Harga Sewa Mobil:</strong> Rp 350.000</p>
+            <p><strong>Biaya Supir:</strong> Rp 50.000</p>
+            <p><strong>Biaya BBM:</strong> Rp 0</p>
+            <p><strong>Biaya Tambahan Lain:</strong> Rp 0</p>
+            <hr>
+            <p><strong>Total Pembayaran:</strong> Rp 1.050.000</p>
+            <p><strong>Metode Pembayaran:</strong> QRIS</p>
+            <p><strong>Status Pembayaran:</strong> UNPAID</p>
+            <p><strong>Batas Waktu Pembayaran:</strong> 14 Mei 2025, 23:59 WIB</p>
+            <button class="btn-upload">Upload Bukti Pembayaran</button>
+        </div>
+    </div>
+      </td>
+      <td class="qr-section">
+        <h3>QRIS Pembayaran</h3>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4pibXJ8tNFdj-zRYUAccmvn7LF3WOaQfb4E8IhBzvW8Kvnlb1Cg&s=10&ec=72940545" alt="QRIS">
+        <p style="margin-top:10px;">Scan QR untuk bayar</p>
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+</body>
+</html>

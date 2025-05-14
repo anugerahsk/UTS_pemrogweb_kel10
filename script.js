@@ -40,24 +40,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // 
   document.getElementById("formSewa").addEventListener("submit", function (e) {
     e.preventDefault();
+
     const nama = document.getElementById("nama").value;
     const email = document.getElementById("email").value;
     const tanggal = document.getElementById("tanggal").value;
     const hari = document.getElementById("hari").value;
     const total = document.getElementById("total").value;
 
-    alert(
-      `Penyewaan berhasil!\n\n` +
-      `Nama: ${nama}\n` +
-      `Email: ${email}\n` +
-      `Tanggal: ${tanggal}\n` +
-      `Lama Sewa: ${hari} hari\n` +
-      `Total Harga: Rp ${total}`
-    );
+    // Sembunyikan modal dan tampilkan verifikasi
     modal.style.display = "none";
+    document.getElementById("verifikasiPembayaran").style.display = "block";
+
+    // Isi data ke verifikasi pembayaran
+    document.getElementById("verNama").innerText = nama;
+    document.getElementById("verEmail").innerText = email;
+    document.getElementById("verTanggal").innerText = tanggal;
+    document.getElementById("verHari").innerText = hari;
+    document.getElementById("verTotal").innerText = total;
+
+    // Countdown 3 jam
+    let countDownTime = new Date().getTime() + 3 * 60 * 60 * 1000;
+    let countdown = setInterval(function () {
+      let now = new Date().getTime();
+      let distance = countDownTime - now;
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerText = "Waktu pembayaran telah habis!";
+        return;
+      }
+
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerText = `Sisa waktu: ${hours} jam ${minutes} menit ${seconds} detik`;
+    }, 1000);
+
+    // Reset form
     this.reset();
   });
 });
-
