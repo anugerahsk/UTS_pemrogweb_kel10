@@ -188,3 +188,21 @@
 
 </body>
 </html>
+
+<div id="verifikasiPembayaran" style="display:none;" class="container">
+  <h2>Verifikasi Pembayaran</h2>
+  <p><strong>Status Transaksi:</strong> <span style="color: orange;">PENDING</span></p>
+  <p><strong>Status Pembayaran:</strong> <span style="color: red;">UNPAID</span></p>
+  <p><strong>Nama:</strong> <span id="verNama"></span></p>
+  <p><strong>Email:</strong> <span id="verEmail"></span></p>
+  <p><strong>Tanggal Sewa:</strong> <span id="verTanggal"></span></p>
+  <p><strong>Durasi Sewa:</strong> <span id="verHari"></span> hari</p>
+  <p><strong>Total Pembayaran:</strong> Rp <span id="verTotal"></span></p>
+
+  <div style="margin-top:20px;">
+    <p><strong>Silakan lakukan pembayaran melalui QRIS di bawah ini sebelum waktu habis:</strong></p>
+    <img src="qris-contoh.png" alt="QRIS" width="200" />
+    <p id="countdown" style="color:red;"></p>
+  </div>
+</div>
+
