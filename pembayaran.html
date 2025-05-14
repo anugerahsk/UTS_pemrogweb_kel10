@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Halaman Pembayaran</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Halaman Pembayaran Lengkap</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      background: #f5f5f5;
       padding: 20px;
     }
 
     .container {
-      max-width: 500px;
-      margin: auto;
-      background-color: white;
+      max-width: 600px;
+      background: #fff;
       padding: 30px;
+      margin: auto;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     h2 {
@@ -34,63 +34,103 @@
     input[type="text"],
     input[type="email"],
     input[type="number"],
-    input[type="submit"] {
+    select {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       margin-top: 5px;
       border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
+      border-radius: 6px;
     }
 
     input[type="submit"] {
-      background-color: #4CAF50;
+      background-color: #28a745;
       color: white;
       border: none;
-      cursor: pointer;
-      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
       font-size: 16px;
+      margin-top: 25px;
+      border-radius: 6px;
+      cursor: pointer;
     }
 
     input[type="submit"]:hover {
-      background-color: #45a049;
+      background-color: #218838;
     }
 
     .row {
       display: flex;
-      justify-content: space-between;
+      gap: 10px;
     }
 
     .row .col {
-      width: 48%;
+      flex: 1;
+    }
+
+    .qr-section {
+      text-align: center;
+      display: none;
+      margin-top: 15px;
+    }
+
+    .qr-section img {
+      max-width: 200px;
     }
   </style>
+  <script>
+    function togglePaymentMethod() {
+      const method = document.getElementById("metode").value;
+      document.getElementById("cardSection").style.display = method === "kartu" ? "block" : "none";
+      document.getElementById("ewalletSection").style.display = method === "ewallet" ? "block" : "none";
+      document.getElementById("qrSection").style.display = method === "qris" ? "block" : "none";
+    }
+  </script>
 </head>
 <body>
   <div class="container">
     <h2>Formulir Pembayaran</h2>
     <form action="proses_pembayaran.php" method="POST">
       <label for="nama">Nama Lengkap</label>
-      <input type="text" id="nama" name="nama" required>
+      <input type="text" id="nama" name="nama" required />
 
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+      <input type="email" id="email" name="email" required />
 
-      <label for="nomor_kartu">Nomor Kartu</label>
-      <input type="text" id="nomor_kartu" name="nomor_kartu" maxlength="16" required>
+      <label for="metode">Metode Pembayaran</label>
+      <select id="metode" name="metode" onchange="togglePaymentMethod()" required>
+        <option value="">-- Pilih Metode --</option>
+        <option value="kartu">Kartu Kredit/Debit</option>
+        <option value="ewallet">E-Wallet (OVO, DANA, GoPay)</option>
+        <option value="qris">QRIS (QR Code)</option>
+      </select>
 
-      <div class="row">
-        <div class="col">
-          <label for="expired">Tanggal Kedaluwarsa</label>
-          <input type="text" id="expired" name="expired" placeholder="MM/YY" required>
-        </div>
-        <div class="col">
-          <label for="cvv">CVV</label>
-          <input type="text" id="cvv" name="cvv" maxlength="4" required>
+      <div id="cardSection" style="display:none;">
+        <label for="nomor_kartu">Nomor Kartu</label>
+        <input type="text" id="nomor_kartu" name="nomor_kartu" maxlength="16"/>
+
+        <div class="row">
+          <div class="col">
+            <label for="expired">Expired (MM/YY)</label>
+            <input type="text" id="expired" name="expired" placeholder="MM/YY"/>
+          </div>
+          <div class="col">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" maxlength="4"/>
+          </div>
         </div>
       </div>
 
-      <input type="submit" value="Bayar Sekarang">
+      <div id="ewalletSection" style="display:none;">
+        <label for="ewallet_nomor">Nomor E-Wallet</label>
+        <input type="text" id="ewallet_nomor" name="ewallet_nomor" placeholder="08xxxxxxxxxx"/>
+      </div>
+
+      <div id="qrSection" class="qr-section">
+        <p>Silakan scan QR di bawah ini menggunakan aplikasi e-wallet Anda:</p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ContohPembayaranQRIS" alt="QR Code Pembayaran">
+      </div>
+
+      <input type="submit" value="Bayar Sekarang" />
     </form>
   </div>
 </body>
