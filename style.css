@@ -1,5 +1,3 @@
-
-
 /* Rental */
 .rental-list {
   display: flex;
@@ -294,7 +292,7 @@ body.about-page {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: #1e1e1e; /* opsional: sesuai warna background pada gambar */
+  background-color: none; /* opsional: sesuai warna background pada gambar */
   padding: 40px;
   color: #fff;
 }
@@ -643,4 +641,28 @@ nav ul li a.active {
   .map-section iframe {
     width: 100% !important;
   }
+}
+
+/* Struktur dasar halaman */
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Konten utama */
+main {
+  flex: 1;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
 }
