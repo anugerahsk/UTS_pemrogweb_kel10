@@ -112,7 +112,25 @@
     </div>
   </div>
 
-  <script>
+  <!-- Verifikasi Pembayaran -->
+  <div id="verifikasiPembayaran" style="display:none;" class="container">
+    <h2>Verifikasi Pembayaran</h2>
+    <p><strong>Status Transaksi:</strong> <span style="color: orange;">PENDING</span></p>
+    <p><strong>Status Pembayaran:</strong> <span style="color: red;">UNPAID</span></p>
+    <p><strong>Nama:</strong> <span id="verNama"></span></p>
+    <p><strong>Email:</strong> <span id="verEmail"></span></p>
+    <p><strong>Tanggal Sewa:</strong> <span id="verTanggal"></span></p>
+    <p><strong>Durasi Sewa:</strong> <span id="verHari"></span> hari</p>
+    <p><strong>Total Pembayaran:</strong> Rp <span id="verTotal"></span></p>
+
+    <div style="margin-top:20px;">
+      <p><strong>Silakan lakukan pembayaran melalui QRIS di bawah ini sebelum waktu habis:</strong></p>
+      <img src="qris-contoh.png" alt="QRIS" width="200" />
+      <p id="countdown" style="color:red;"></p>
+    </div>
+  </div>
+
+<script>
   const modal = document.getElementById("sewaModal");
   const span = document.getElementsByClassName("close")[0];
   const hargaInput = document.getElementById("harga");
@@ -121,7 +139,6 @@
 
   document.querySelectorAll(".mobil-info button").forEach(button => {
     button.addEventListener("click", function () {
-      // Ambil dari <h4> yang berisi harga
       const hargaText = this.parentElement.querySelector("h4").innerText;
       const harga = parseInt(hargaText.replace(/\D/g, ""));
       hargaInput.value = harga;
@@ -157,23 +174,20 @@
     const hari = document.getElementById("hari").value;
     const total = document.getElementById("total").value;
 
-    alert(
-      `Penyewaan berhasil!\n\n` +
-      `Nama: ${nama}\n` +
-      `Email: ${email}\n` +
-      `Tanggal: ${tanggal}\n` +
-      `Lama Sewa: ${hari} hari\n` +
-      `Total Harga: Rp ${total}`
-    );
+    document.getElementById("verNama").textContent = nama;
+    document.getElementById("verEmail").textContent = email;
+    document.getElementById("verTanggal").textContent = tanggal;
+    document.getElementById("verHari").textContent = hari;
+    document.getElementById("verTotal").textContent = total;
+
     modal.style.display = "none";
+    document.getElementById("verifikasiPembayaran").style.display = "block";
+
     this.reset();
   });
 </script>
 
-  <!-- Ini adalah tempat footer dimuat -->
 <div id="footer"></div>
-
-<!-- Ini adalah JavaScript yang akan mengambil isi dari footer.html -->
 <script>
   fetch("footer.html")
     .then(response => response.text())
@@ -184,25 +198,5 @@
       console.error("Gagal memuat footer:", error);
     });
 </script>
-
-
 </body>
 </html>
-
-<div id="verifikasiPembayaran" style="display:none;" class="container">
-  <h2>Verifikasi Pembayaran</h2>
-  <p><strong>Status Transaksi:</strong> <span style="color: orange;">PENDING</span></p>
-  <p><strong>Status Pembayaran:</strong> <span style="color: red;">UNPAID</span></p>
-  <p><strong>Nama:</strong> <span id="verNama"></span></p>
-  <p><strong>Email:</strong> <span id="verEmail"></span></p>
-  <p><strong>Tanggal Sewa:</strong> <span id="verTanggal"></span></p>
-  <p><strong>Durasi Sewa:</strong> <span id="verHari"></span> hari</p>
-  <p><strong>Total Pembayaran:</strong> Rp <span id="verTotal"></span></p>
-
-  <div style="margin-top:20px;">
-    <p><strong>Silakan lakukan pembayaran melalui QRIS di bawah ini sebelum waktu habis:</strong></p>
-    <img src="qris-contoh.png" alt="QRIS" width="200" />
-    <p id="countdown" style="color:red;"></p>
-  </div>
-</div>
-
