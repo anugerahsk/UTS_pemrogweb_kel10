@@ -150,24 +150,28 @@
   });
 
   document.getElementById("formSewa").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const nama = document.getElementById("nama").value;
-    const email = document.getElementById("email").value;
-    const tanggal = document.getElementById("tanggal").value;
-    const hari = document.getElementById("hari").value;
-    const total = document.getElementById("total").value;
+  e.preventDefault();
 
-    alert(
-      `Penyewaan berhasil!\n\n` +
-      `Nama: ${nama}\n` +
-      `Email: ${email}\n` +
-      `Tanggal: ${tanggal}\n` +
-      `Lama Sewa: ${hari} hari\n` +
-      `Total Harga: Rp ${total}`
-    );
-    modal.style.display = "none";
-    this.reset();
-  });
+  const nama = document.getElementById("nama").value;
+  const email = document.getElementById("email").value;
+  const tanggal = document.getElementById("tanggal").value;
+  const hari = document.getElementById("hari").value;
+  const total = document.getElementById("total").value;
+
+  // Simpan data ke localStorage
+  localStorage.setItem("nama", nama);
+  localStorage.setItem("email", email);
+  localStorage.setItem("tanggal", tanggal);
+  localStorage.setItem("hari", hari);
+  localStorage.setItem("total", total);
+
+  // Tutup modal
+  modal.style.display = "none";
+
+  // Arahkan ke halaman invoice
+  window.location.href = "invoice.html";
+});
+
 </script>
 
   <!-- Ini adalah tempat footer dimuat -->
