@@ -262,8 +262,8 @@ body.about-page {
 }
 
 .profile .logo {
-  width: 100px;
-  height: 100px;
+  width: 250px;
+  height: 250px;
   margin-bottom: 1.5rem;
   object-fit: contain;
 }
@@ -668,5 +668,10 @@ footer {
   color: white;
   padding: 20px;
 }
+
+
+
+
+
 
 
