@@ -91,6 +91,15 @@
     .btn-rincian:hover, .btn-upload:hover {
       background-color: #ff8c00;
     }
+    .btn-kembali {
+      display: inline-block;
+      margin-top: 20px;
+      background: #6c757d;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #fff;
+    }    .btn-kembali:hover {      background: #5a6268;    }
   </style>
 </head>
 
@@ -126,7 +135,7 @@
             <p><strong>Total Pembayaran:</strong> Rp <span id="totalModal"></span></p>
             <p><strong>Metode Pembayaran:</strong> QRIS</p>
             <p><strong>Status Pembayaran:</strong> UNPAID</p>
-            <p><strong>Batas Waktu Pembayaran:</strong> 14 Mei 2025, 23:59 WIB</p>
+            <p><strong>Batas Waktu Pembayaran:</strong> <span class="batasWaktuBayar"></span></p>
             <button class="btn-upload">Upload Bukti Pembayaran</button>
           </div>
         </div>
@@ -137,6 +146,7 @@
         <h3>QRIS Pembayaran</h3>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4pibXJ8tNFdj-zRYUAccmvn7LF3WOaQfb4E8IhBzvW8Kvnlb1Cg&s=10&ec=72940545" alt="QRIS">
         <p style="margin-top:10px;">Scan QR untuk bayar</p>
+        <a href="rental.html" class="btn-kembali">← Kembali ke Booking</a>
       </td>
     </tr>
   </table>
@@ -157,6 +167,11 @@ function getParam(param) {
   return urlParams.get(param);
 }
 
+function getParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
 // Ambil data dari URL
 const nama = getParam("nama");
 const mobil = getParam("mobil");
@@ -168,14 +183,37 @@ const total = getParam("total");
 const invoiceNum = "INV" + Math.floor(10000000 + Math.random() * 90000000);
 
 // Isi data ke halaman
-document.getElementById("produk").innerHTML = `Produk: Sewa Mobil ${mobil}`;
+document.getElementById("produk").innerHTML = mobil ? `Produk: Sewa Mobil ${mobil}` : 'Produk: -';
 document.getElementById("invoice").innerText = invoiceNum;
-document.getElementById("totalBayar").innerText = "Rp " + total;
+document.getElementById("totalBayar").innerText = total ? "Rp " + parseInt(total).toLocaleString('id-ID') : "Rp -";
 
 document.getElementById("invoiceModal").innerText = invoiceNum;
-document.getElementById("produkModal").innerText = `Sewa Mobil ${mobil}`;
-document.getElementById("hargaModal").innerText = harga;
-document.getElementById("totalModal").innerText = total;
+document.getElementById("produkModal").innerText = mobil ? `Sewa Mobil ${mobil}` : '-';
+document.getElementById("hargaModal").innerText = harga ? parseInt(harga).toLocaleString('id-ID') : "-";
+document.getElementById("totalModal").innerText = total ? parseInt(total).toLocaleString('id-ID') : "-";
+
+
+// tambahkan script batas waktu pembayaran di sini
+
+// Hitung batas waktu pembayaran (misal 1x24 jam dari sekarang)
+let waktuSekarang = new Date();
+let batasWaktu = new Date(waktuSekarang.getTime() + (24 * 60 * 60 * 1000));
+
+// Format tanggal ke string Indonesia
+function formatTanggal(tanggal) {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const tanggalFormatted = tanggal.toLocaleDateString('id-ID', options);
+  const jamFormatted = tanggal.getHours().toString().padStart(2, '0');
+  const menitFormatted = tanggal.getMinutes().toString().padStart(2, '0');
+  return `${tanggalFormatted}, ${jamFormatted}:${menitFormatted} WIB`;
+}
+
+// Tampilkan ke modal
+document.querySelectorAll(".batasWaktuBayar").forEach(function(el) {
+  el.innerText = formatTanggal(batasWaktu);
+});
+
+
 </script>
 
 </body>
