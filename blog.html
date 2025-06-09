@@ -1,27 +1,82 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blog | Rental Mobil Jogja</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+<body class="service-page">
   <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="rental.html">Rental</a></li>
-        <li><a href="pelayanan.html">Pelayanan</a></li>
-        <li><a href="about.html">Tentang Kami</a></li>
-        <li><a href="contact.html">Kontak</a></li>
-        <li><a class="active" href="blog.html">Blog</a></li>
-      </ul>
-    </nav>
-  </header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rental.html">Rental</a></li>
+      <li><a href="pelayanan.html" class="active">Pelayanan</a></li>
+      <li><a href="about.html">Tentang Kami</a></li>
+      <li><a href="contact.html">Kontak</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
+  </nav>
 
-   <footer>
+  <!-- Konten Blog -->
+  <main class="blog-container">
+    <h1>Rekomendasi Kuliner & Hotel di Yogyakarta</h1>
+
+    <!-- Kuliner -->
+    <section class="blog-section">
+      <h2>Kuliner Terenak</h2>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Gudeg_Yu_Djum.jpg" alt="Gudeg Yu Djum">
+          <h3>Gudeg Yu Djum</h3>
+          <p>Gudeg legendaris khas Jogja dengan rasa manis dan krecek pedas.</p>
+          <a href="https://goo.gl/maps/NFqNvXSE58UEVDVZ6" target="_blank">📍 Cek Lokasi</a>
+        </article>
+        <article class="blog-card">
+          <img src="https://www.masakapahariini.com/wp-content/uploads/2020/03/sate-klatak.jpg" alt="Sate Klathak Pak Pong">
+          <h3>Sate Klathak Pak Pong</h3>
+          <p>Sate kambing unik dengan tusuk jeruji besi, khas Bantul.</p>
+          <a href="https://goo.gl/maps/dLVVaJZ99h7AH6uH7" target="_blank">📍 Cek Lokasi</a>
+        </article>
+        <article class="blog-card">
+          <img src="https://assets.kompasiana.com/items/album/2022/05/28/bakmi-jawa-6291b460b372e060cc4dcf78.jpg" alt="Bakmi Jawa Mbah Gito">
+          <h3>Bakmi Jawa Mbah Gito</h3>
+          <p>Bakmi godhog otentik dengan suasana tradisional Jawa.</p>
+          <a href="https://goo.gl/maps/kZFTAXTeEGN2" target="_blank">📍 Cek Lokasi</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Hotel -->
+    <section class="blog-section">
+      <h2>Hotel Terbaik</h2>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/b0/7a/b9/exterior.jpg" alt="The Phoenix Hotel">
+          <h3>The Phoenix Hotel</h3>
+          <p>Hotel klasik bernuansa kolonial di pusat kota Yogyakarta.</p>
+          <a href="https://goo.gl/maps/wKrj8qnvtdR4W4Cy5" target="_blank">📍 Cek Lokasi</a>
+        </article>
+        <article class="blog-card">
+          <img src="https://media-cdn.tripadvisor.com/media/photo-s/1b/f4/9b/b0/hotel-tentrem-yogyakarta.jpg" alt="Hotel Tentrem">
+          <h3>Royal ambarrukmo </h3>
+          <p>Hotel mewah dengan pelayanan premium dan fasilitas lengkap.</p>
+          <a href="https://goo.gl/maps/rPYnpi3xdzBKkKxE7" target="_blank">📍 Cek Lokasi</a>
+        </article>
+        <article class="blog-card">
+          <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/232397173.jpg" alt="Greenhost Boutique Hotel">
+          <h3>Greenhost Boutique Hotel</h3>
+          <p>Hotel ramah lingkungan dengan desain artistik dan rooftop garden.</p>
+          <a href="https://goo.gl/maps/yEutRwB4DvG2" target="_blank">📍 Cek Lokasi</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
     <div class="footer-container">
       <div class="footer-column">
         <h3>Jam Layanan</h3>
@@ -57,12 +112,7 @@
     </div>
   </footer>
 
-  <!-- Konten Blog Kosong -->
-  <main class="blog-container">
-    <!-- Konten blog dikosongkan sesuai permintaan -->
-  </main>
-
-  <!-- Footer -->
+  <!-- Footer dinamis -->
   <div id="footer-placeholder"></div>
   <script src="script.js"></script>
 </body>
