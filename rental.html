@@ -5,9 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rental Mobil</title>
   <link rel="stylesheet" href="style.css" />
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+  <style>
+    /* Modal CSS minimal supaya modal muncul dengan benar */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      overflow: auto;
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 400px;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 10px; right: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #aaa;
+    }
+    .close:hover {
+      color: black;
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -25,7 +54,6 @@
 
     <h3>Family Car</h3>
     <div class="mobil-list">
-      <!-- Daftar mobil -->
       <div class="mobil-item">
         <img src="fortuner.jpg" alt="Fortuner">
         <div class="mobil-info">
@@ -49,9 +77,7 @@
       <div class="mobil-item">
         <img src="inova.jpg" alt="Inova">
         <div class="mobil-info">
-
           <h2>Innova</h2>
-
           <h4>Rp 500.000 / hari</h4>
           <p>Luas, nyaman buat keluarga besar.</p>
           <button>Sewa Sekarang</button>
@@ -126,8 +152,6 @@
     </div>
   </div>
 
-  
-
   <!-- Modal Form -->
   <div id="sewaModal" class="modal">
     <div class="modal-content">
@@ -159,61 +183,74 @@
       </form>
     </div>
   </div>
-<script>
-const modal = document.getElementById("SewaModal");
-const span = document.getElementsByClassName("Close")[0];
-const hargaInput = document.getElementById("Harga");
-const hariInput = document.getElementById("Hari");
-const totalInput = document.getElementById("Total");
-const mobilInput = document.getElementById("Mobil");
 
-// Event klik tombol sewa
-document.querySelectorAll(".mobil-info button").forEach(button => {
-  button.addEventListener("click", function () {
-    const mobilNama = this.parentElement.querySelector("h2").innerText;
-    const hargaText = this.parentElement.querySelector("h4").innerText;
-    const harga = parseInt(hargaText.replace(/\D/g, ""));
+  <script>
+    const modal = document.getElementById("sewaModal"); // HARUS "sewaModal" bukan "SewaModal"
+    const span = document.getElementsByClassName("close")[0]; // HARUS "close" bukan "Close"
+    const hargaInput = document.getElementById("harga");
+    const hariInput = document.getElementById("hari");
+    const totalInput = document.getElementById("total");
+    const mobilInput = document.getElementById("mobil");
 
-    mobilInput.value = mobilNama;
-    hargaInput.value = harga;
-    totalInput.value = "";
-    hariInput.value = "";
-    modal.style.display = "block";
-  });
-});
+    // Event klik tombol sewa
+    document.querySelectorAll(".mobil-info button").forEach(button => {
+      button.addEventListener("click", function () {
+        const mobilNama = this.parentElement.querySelector("h2").innerText;
+        const hargaText = this.parentElement.querySelector("h4").innerText;
+        const harga = parseInt(hargaText.replace(/\D/g, ""));
 
-// Tutup modal
-span.onclick = () => modal.style.display = "none";
-window.onclick = (event) => {
-  if (event.target == modal) modal.style.display = "none";
-};
+        mobilInput.value = mobilNama;
+        hargaInput.value = harga;
+        totalInput.value = "";
+        hariInput.value = "";
+        modal.style.display = "block";
+      });
+    });
 
-// Hitung total harga otomatis
-hariInput.addEventListener("input", () => {
-  const hari = parseInt(hariInput.value);
-  const harga = parseInt(hargaInput.value);
-  if (!isNaN(hari) && !isNaN(harga)) {
-    totalInput.value = harga * hari;
-  }
-});
+    // Tutup modal
+    span.onclick = () => {
+      modal.style.display = "none";
+    };
 
-// Submit form kirim data via URL query string
-document.getElementById("formSewa").addEventListener("submit", function (e) {
-  e.preventDefault();
+    window.onclick = (event) => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
 
-  const nama = document.getElementById("nama").value;
-  const email = document.getElementById("email").value;
-  const tanggal = document.getElementById("tanggal").value;
-  const hari = document.getElementById("hari").value;
-  const mobil = document.getElementById("mobil").value;
-  const harga = document.getElementById("harga").value;
-  const total = document.getElementById("total").value;
+    // Hitung total harga otomatis saat input hari diubah
+    hariInput.addEventListener("input", () => {
+      const hari = parseInt(hariInput.value);
+      const harga = parseInt(hargaInput.value);
+      if (!isNaN(hari) && !isNaN(harga)) {
+        totalInput.value = harga * hari;
+      } else {
+        totalInput.value = "";
+      }
+    });
 
-  const url = `invoice.html?nama=${encodeURIComponent(nama)}&email=${encodeURIComponent(email)}&tanggal=${tanggal}&hari=${hari}&mobil=${mobil}&harga=${harga}&total=${total}`;
-  
-  window.location.href = url;
-});
-</script>
+    // Submit form dan redirect ke invoice.html
+    document.getElementById("formSewa").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nama = document.getElementById("nama").value;
+      const email = document.getElementById("email").value;
+      const tanggal = document.getElementById("tanggal").value;
+      const hari = document.getElementById("hari").value;
+      const mobil = document.getElementById("mobil").value;
+      const harga = document.getElementById("harga").value;
+      const total = document.getElementById("total").value;
+
+      if (!nama || !email || !tanggal || !hari || !mobil || !harga || !total) {
+        alert("Mohon lengkapi form penyewaan!");
+        return;
+      }
+
+      const url = `invoice.html?nama=${encodeURIComponent(nama)}&email=${encodeURIComponent(email)}&tanggal=${tanggal}&hari=${hari}&mobil=${mobil}&harga=${harga}&total=${total}`;
+      
+      window.location.href = url;
+    });
+  </script>
 
   <!-- Load Footer -->
   <div id="footer"></div>
