@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History Penyewaan Mobil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      th {
+        position: sticky;
+        top: 0;
+        background-color: #007BFF;
+        color: white;
+      }
+      td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+      }
+      td::before {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Riwayat Penyewaan Mobil</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama Pelanggan</th>
+        <th>Email Pelanggan</th>
+        <th>Mobil</th>
+        <th>Periode Sewa</th>
+        <th>Harga per Hari</th>
+        <th>Harga Total</th>
+        <th>Nomor Invoice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Aditia Ramadhan</td>
+        <td>aditia@gmail.com</td>
+        <td>Toyota Avanza</td>
+        <td>2025-06-01 s.d. 2025-06-05</td>
+        <td>Rp400.000</td>
+        <td>Rp2.000.000</td>
+        <td>INV-20250601-01</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Dina Putri</td>
+        <td>dina.putri@email.com</td>
+        <td>Honda Brio</td>
+        <td>2025-06-10 s.d. 2025-06-12</td>
+        <td>Rp350.000</td>
+        <td>Rp1.050.000</td>
+        <td>INV-20250610-02</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Andi Prasetyo</td>
+        <td>andi.pras@email.com</td>
+        <td>Suzuki Ertiga</td>
+        <td>2025-06-15 s.d. 2025-06-18</td>
+        <td>Rp450.000</td>
+        <td>Rp1.350.000</td>
+        <td>INV-20250615-03</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
